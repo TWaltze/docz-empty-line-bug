@@ -1,0 +1,54 @@
+---
+name: Alert
+menu: Components
+---
+
+import { useState } from 'react';
+import { Playground, Props } from 'docz'
+import { Alert } from './Alert'
+
+# Alert
+
+## Properties
+
+<Props of={Alert} />
+
+## Basic usage
+
+<Playground>
+  {
+    class Example extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          count: 0
+        };
+      }
+      // add empty line here to trigger error
+      render() {
+        return (
+          <div onClick={() => this.setState({ count: this.state.count + 1 })}>
+            <Alert>Some message {this.state.count}</Alert>
+          </div>
+        );
+      }
+    }
+  }
+</Playground>
+
+## Using different kinds
+
+<Playground>
+  {() => {
+    const [ count, setCount ] = useState(0);
+    // or add empty line here to trigger error
+    return (
+      <div onClick={() => setCount(count + 1)}>
+        <Alert kind="info">Some message {count}</Alert>
+        <Alert kind="positive">Some message</Alert>
+        <Alert kind="negative">Some message</Alert>
+        <Alert kind="warning">Some message</Alert>
+      </div>
+    )
+  }}
+</Playground>
